@@ -1,5 +1,5 @@
 require 'sinatra'
-require 'data_mapper'
+require 'sequel'
 require 'sqlite3'
 
-load 'Support_rb/api_endpoint.rb'
+require_relative 'support_rb/api_endpoints.rb'
