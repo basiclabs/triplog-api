@@ -6,4 +6,3 @@ gem 'sqlite3'
 gem 'rake'
 gem 'dm-sqlite-adapter'
 gem 'data_mapper'
-
