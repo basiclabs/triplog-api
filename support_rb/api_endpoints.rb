@@ -8,7 +8,7 @@ get '/trips' do
 
 get '/trips/:id' do
 	DB.fetch("SELECT * FROM trips WHERE :id IS :id do |row|
-		puts row[:name]
+		puts row[:name]")
 	end
 
 get '/trips/:id/photos' do
