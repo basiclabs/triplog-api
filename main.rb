@@ -1,20 +1,11 @@
 require 'sinatra'
-require 'data_mapper'
-require 'sqlite3'
+require 'sequel'
 
 enable :sessions
 
-DataMapper::setup(:default, "sqlite://dev.db")  
+DB = Sequel.sqlite('dev.db')
 
-class User
-	include DataMapper::Resource
-	property :id, Serial
-	property :username, 	String, :required => true
-	property :password, 	String, :required => true
-	property :email, 	String
-end
-
-DataMapper.finalize.auto_upgrade!
+mUsers = DB.users
 
 
 get '/' do
@@ -36,11 +27,10 @@ end
 
 post '/register' do
 	if(params[:password] == params[:confirmPassword])
-		user = User.new
-		user.email = ""
-		user.username = params[:username]
-		user.password = params[:password]
-		user.save
+		mUsers.insert(:name => params[:name])
+		mUsers.insert(:password => params[:password])
+
+		session[:user] = true
 		redirect '/'
 	else
 		'Passwords must match'
