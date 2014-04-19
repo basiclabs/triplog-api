@@ -1,5 +1,4 @@
 get '/trips' do
-  "hi"
 end
 
 get '/trips/:id' do
