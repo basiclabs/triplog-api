@@ -1,4 +1,5 @@
 get '/trips' do
+	Trip.all.to_json
 end
 
 get '/trips/:id' do

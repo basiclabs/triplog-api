@@ -1,5 +1,6 @@
 require 'sequel'
 require 'sinatra'
+require 'json'
 
 DB = Sequel.connect('sqlite://dev.db')
 
