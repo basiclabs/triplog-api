@@ -1,0 +1,13 @@
+<% if @user %>
+	<a href='/logout'>logout</a>
+<% else %>
+	<a href='/login'>login</a>
+	<a href='/register'>register</a>
+<% end %>
+
+<br>
+
+<% if @user %>
+  <%= 'Hi' %>
+  <%= @user[:email] %>
+<% end %>
