@@ -17,10 +17,6 @@ end
 get '/logout' do
     session.clear
     redirect '/'
-end
-
-get '/test' do
-	DB[:users].filter(:name=>'Peep').map(:name).join(', ')
 end	
 
 post '/register' do
@@ -40,6 +36,7 @@ end
 post '/login' do
 	if(mUsers.where(:name => params[:name], :password => params[:password]).count > 0) #checks if name and password are in database
 		'Yahello senpai~<3~'
+		session[:user] = true
 	else
 		redirect '/'
 	end
