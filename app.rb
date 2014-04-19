@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'sequel'
+require 'json'
 
 DB = Sequel.connect('sqlite://dev.db')
 
