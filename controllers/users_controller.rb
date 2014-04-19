@@ -19,10 +19,6 @@ get '/logout' do
     redirect '/'
 end
 
-get '/test' do
-	DB[:users].filter(:name=>'Peep').map(:name).join(', ')
-end	
-
 post '/register' do
 	if(params[:password] == params[:confirmPassword])
 		if (mUsers.where(:email => params[:email]).count > 0) #checks to see if email is already in db
