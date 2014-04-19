@@ -1,9 +1,13 @@
-<a href='/login'>login</a>
-<a href='/register'>register</a>
+<% if @user %>
+	<a href='/logout'>logout</a>
+<% else %>
+	<a href='/login'>login</a>
+	<a href='/register'>register</a>
+<% end %>
 
 <br>
 
-<% if session %>
-  <% 'Hi'%>
-  <%  %>
+<% if @user %>
+  <%= 'Hi' %>
+  <%= @user[:email] %>
 <% end %>
