@@ -1,9 +1,9 @@
 get '/trips' do
-	Trip.all.to_json
+  Trip.all.to_json
 end
 
 get '/trips/:id' do
-	Trip.where(:id => params[:id]).all.to_json
+  Trip.where(:id => params[:id]).all.to_json
 end
 
 get '/trips/:id/photos' do

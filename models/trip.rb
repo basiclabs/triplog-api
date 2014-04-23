@@ -1,3 +1,3 @@
 class Trip < Sequel::Model
-	plugin :json_serializer
+  plugin :json_serializer
 end
