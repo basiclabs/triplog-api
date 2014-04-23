@@ -3,8 +3,9 @@ require 'sinatra'
 
 task :default => [:server]
 
+desc "Starts the TripLog API"
 task :server do
-    `rackup -p 1337`
+  `rackup -p 1337`
 end
 
 task :console do
