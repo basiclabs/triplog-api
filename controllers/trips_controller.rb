@@ -2,11 +2,11 @@ module TripLog
   module Controllers
     class Trips < Sinatra::Application
       get '/trips' do
-        Trip.all.to_json
+        Models::Trip.all.to_json
       end
 
       get '/trips/:id' do
-        Trip.where(:id => params[:id]).all.to_json
+        Models::Trip.where(:id => params[:id]).all.to_json
       end
 
       get '/trips/:id/photos' do
