@@ -4,7 +4,7 @@ require 'sinatra'
 task :default => [:server]
 
 task :server do
-    Sinatra::Application.run!
+    `rackup -p 1337`
 end
 
 task :console do
