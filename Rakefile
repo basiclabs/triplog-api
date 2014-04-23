@@ -1,4 +1,3 @@
-require 'irb'
 require 'sinatra'
 
 task :default => [:server]
@@ -8,8 +7,7 @@ task :server do
 end
 
 task :console do
-  ARGV.clear
-  IRB.start
+  sh('irb -rubygems -I . -r app.rb')
 end
 
 namespace :db do
