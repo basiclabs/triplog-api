@@ -9,20 +9,20 @@ before do
 end
 
 get '/' do
-    erb :index
+  erb :index
 end
 
 get '/register' do
-    erb :register
+  erb :register
 end
 
 get '/login' do
-    erb :login
+  erb :login
 end
 
 get '/logout' do
-    session.clear
-    redirect '/'
+  session.clear
+  redirect '/'
 end
 
 post '/register' do
