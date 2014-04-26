@@ -33,7 +33,8 @@ module TripLog
           if (mUsers.where(:email => params[:email]).count > 0) #checks to see if email is already in db
             redirect '/login' #TODO: update this when login updates
           else
-            session[:user_id] = mUsers.insert(:name => params[:name], :password => params[:password], :email => params[:email])
+            session[:user_id] = mUsers.insert(:name => params[:name], :password => params[:password],
+              :email => params[:email])
             redirect '/'
           end
         else
@@ -42,9 +43,11 @@ module TripLog
       end
 
       post '/login' do
-        if(mUsers.where(:email => params[:email], :password => params[:password]).count > 0) #checks if name and password are in database
+        user = mUsers.where(:email => params[:email], :password => params[:password]).all[0]
+
+        if(user) #checks if name and password are in database
           'Yahello senpai~<3~'
-          session[:user_id] = mUsers[:email => params[:email]][:id]
+          session[:user_id] = user[:id]
           redirect '/'
         else
           redirect '/login'
