@@ -13,18 +13,37 @@ module TripLog
       end
 
       post '/trips' do
+        Models::Trip.create(params)
       end
 
       post '/trips/:id/photos' do
       end
 
       delete '/trips/:id' do
+        trip = Models::Trip.where(:id => params[:id]).all[0]
+
+        if trip
+          trip.delete
+          return 200
+        else
+          return 404
+        end
       end
 
       delete '/trips/:id/photos/:id' do
       end
 
       put '/trips/:id' do
+        trip = Models::Trip.where(:id => params[:id])
+
+        if trip.all[0]
+          trip.update(:name => params[:name], :date => params[:date], :published_date => params[:published_date], 
+            :description => params[:description], :private => params[:private])
+
+          return 200, trip.all[0].to_json
+        else
+          return 404
+        end
       end
 
       put '/trips/:id/photos/:id' do
