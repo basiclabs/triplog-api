@@ -31,6 +31,14 @@ module TripLog
       end
 
       delete '/trips/:id/photos/:id' do
+        photo = Models::Photo[:id => params[:id]]
+
+        if photo
+          photo.delete
+          return 200
+        else
+          return 404
+        end
       end
 
       put '/trips/:id' do
