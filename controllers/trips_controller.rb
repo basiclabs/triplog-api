@@ -18,7 +18,7 @@ module TripLog
       end
 
       post '/trips/:id/photos' do
-        Models::Photo.create(:url => "test.jpg", :date => Date.new, :lat => 1.1, :long => 1.2)
+        Models::Photo.create(params)
       end
 
       delete '/trips/:id' do
