@@ -36,7 +36,7 @@ module TripLog
       put '/trips/:id' do
         trip = Models::Trip[:id => params[:id]]
 
-        if trip.all[0]
+        if trip
           trip.update(:name => params[:name], :date => params[:date], :published_date => params[:published_date], 
             :description => params[:description], :private => params[:private])
 
