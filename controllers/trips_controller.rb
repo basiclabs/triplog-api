@@ -33,6 +33,14 @@ module TripLog
       end
 
       delete '/trips/:id/photos/:id' do
+        photo = Models::Photo[:id => params[:id]]
+
+        if photo
+          photo.delete
+          return 200
+        else
+          return 404
+        end
       end
 
       put '/trips/:id' do
@@ -49,6 +57,16 @@ module TripLog
       end
 
       put '/trips/:id/photos/:id' do
+        photo = Models::Photo[:id => params[:id]]
+
+        if photo
+          photo.update(:caption => params[:caption], :url => params[:url], 
+            :date => params[:date], :lat => params[:lat], :long => params[:long])
+
+          return 200, photo.to_json
+        else
+          return 404
+        end
       end
     end
   end
