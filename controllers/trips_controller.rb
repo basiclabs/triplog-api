@@ -10,6 +10,7 @@ module TripLog
       end
 
       get '/trips/:id/photos' do
+        Models::Photo[:id => params[:id]].to_json
       end
 
       post '/trips' do
@@ -17,6 +18,7 @@ module TripLog
       end
 
       post '/trips/:id/photos' do
+        Models::Photo.create(params)
       end
 
       delete '/trips/:id' do
