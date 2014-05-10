@@ -6,7 +6,7 @@ module TripLog
       end
 
       get '/trips/:id' do
-        Models::Trip[:id => params[:id]].all.to_json
+        Models::Trip[:id => params[:id]].to_json
       end
 
       get '/trips/:id/photos' do
