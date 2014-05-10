@@ -40,7 +40,7 @@ module TripLog
       end
 
       post '/login' do
-        user = mUsers.where(:email => params[:email], :password => params[:password]).all[0]
+        user = mUsers(:email => params[:email], :password => params[:password])
 
         if(user) #checks if name and password are in database
           'Yahello senpai~<3~'
