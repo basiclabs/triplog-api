@@ -36,7 +36,7 @@ module TripLog
         photo = Models::Photo[:id => params[:id]]
 
         if photo
-          photo.delete
+          photo.destroy
           return 200
         else
           return 404
