@@ -25,7 +25,7 @@ module TripLog
         trip = Models::Trip[:id => params[:id]]
 
         if trip
-          trip.delete
+          trip.destroy
           return 200
         else
           return 404
