@@ -6,7 +6,7 @@ module TripLog
       end
 
       get '/trips/:id' do
-        Models::Trip.where(:id => params[:id]).all.to_json
+        Models::Trip[:id => params[:id]].all.to_json
       end
 
       get '/trips/:id/photos' do
@@ -20,7 +20,7 @@ module TripLog
       end
 
       delete '/trips/:id' do
-        trip = Models::Trip.where(:id => params[:id]).all[0]
+        trip = Models::Trip[:id => params[:id]]
 
         if trip
           trip.delete
@@ -34,13 +34,13 @@ module TripLog
       end
 
       put '/trips/:id' do
-        trip = Models::Trip.where(:id => params[:id])
+        trip = Models::Trip[:id => params[:id]]
 
         if trip.all[0]
           trip.update(:name => params[:name], :date => params[:date], :published_date => params[:published_date], 
             :description => params[:description], :private => params[:private])
 
-          return 200, trip.all[0].to_json
+          return 200, trip.to_json
         else
           return 404
         end
